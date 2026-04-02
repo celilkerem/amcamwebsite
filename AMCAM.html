@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şimşek Tanık</title>
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: #0f0f1a;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 45px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+
+        .quote-section {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .line {
+            width: 70%;
+            margin: 15px auto;
+            border-bottom: 2px solid rgba(255,255,255,0.6);
+        }
+
+        .quote {
+            font-size: 20px;
+            margin: 20px;
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .sidebar {
+            width: 240px;
+            padding: 25px;
+        }
+
+        .box {
+            background: #1c1c2b;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+        }
+
+        /* PROFİL */
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+            box-shadow: 0 0 15px rgba(102,126,234,0.7);
+            transition: 0.3s;
+        }
+
+        .profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .profile h3 {
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .box a {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .box a:hover {
+            background: #667eea;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #667eea;
+        }
+
+        .icon {
+            width: 26px;
+            height: 26px;
+            margin-right: 12px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .card {
+            background: #1c1c2b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .extra-box {
+            background: #1c1c2b;
+            padding: 20px;
+            margin-top: 20px; /* içerik kartından boşluk */
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            transition: 0.3s;
+        }
+
+        .extra-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(102,126,234,0.7);
+        }
+
+        .extra-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .extra-box p {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .rightbar {
+            width: 300px;
+            padding: 25px;
+        }
+
+        .playlist {
+            background: #1c1c2b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .playlist:hover {
+            transform: scale(1.03);
+        }
+
+        .playlist img {
+            width: 100%;
+        }
+
+        .playlist::after {
+            content: "▶";
+            position: absolute;
+            font-size: 40px;
+            color: white;
+            top: 40%;
+            left: 45%;
+            opacity: 0.8;
+        }
+
+        .playlist-title {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* ABONE & İZLENME KUTUSU */
+        .stats-box {
+            background: #1c1c2b;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            margin-top: 20px;
+            max-width: 240px;
+            text-align: center;
+        }
+
+        .stats-box h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .stats-table {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            background: #151522;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .stat-row:hover {
+            background: #667eea;
+        }
+
+        .counter {
+            font-size: 18px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar, .rightbar {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+
+        .gmail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 6px;
+    background: #1e192c;
+    transition: 0.3s;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Şimşek Tanık</h1>
+</header>
+
+<div class="quote-section">
+    <div class="line"></div>
+    <div class="quote">
+        “Öğrenmek, zihnin sınırlarını genişletmek değil; aslında o sınırların hiç var olmadığını fark etmektir.”
+    </div>
+    <div class="line"></div>
+</div>
+
+<div class="container">
+
+    <!-- SOL -->
+    <div class="sidebar">
+        <div class="box">
+
+            <!-- PROFİL -->
+            <div class="profile">
+                <img src="/profil/profil.jpg" alt="Profil">
+                <h3>Şimşek Tanık</h3>
+            </div>
+
+            <!-- SOSYAL -->
+            <a href="https://youtube.com/@simsektanik" target="_blank">
+                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+                YouTube Kanalım
+            </a>
+
+            <a href="https://www.instagram.com/simsek.tanik/" target="_blank">
+                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+                Instagram
+            </a>
+            
+           <!-- GMAIL (tıklamasız) -->
+<div class="gmail-row">
+    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/281/281769.png" style="width:24px;height:24px;">
+    <span>simsek.tanik@gmail.com</span>
+</div>
+
+            <!-- ABONE & İZLENME KUTUSU -->
+            <div class="stats-box">
+                <h3>Kanal İstatistikleri</h3>
+                <div class="stats-table">
+                    <div class="stat-row">
+                        <span>👥 Abone</span>
+                        <span class="counter" data-count="56700">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>👁️ İzlenme</span>
+                        <span class="counter" data-count="18729570">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="extra-box">
+            <h3>Notlar & Duyurular</h3>
+            <p>
+                Özel ders için mailimden ulaşabilirsiniz.
+            </p>
+        </div>
+
+        </div>
+    </div>
+
+    <!-- ORTA -->
+    <div class="content">
+        <div class="card">
+            <h2>HAKKIMDA</h2>
+            <p>
+               • Üniversite: ODTÜ İnşaat Mühendisliği mezunu (üniversite sınavında 2K)<br> • Lise: Kdz. Ereğli Teknik Lisesi "Elektronik" bölümü mezunu<br> • Pedagojik Formasyon Belgesi sahibi<br> • Üniversite öğrenciliğinden bu yana özel dersler veriyor<br> • Lisanslı Satranç oyuncusu, Lisanslı Briç oyuncusu<br> • Gezmeyi ve gezerek öğrenmeyi seviyor (yakında kanalımızda GEZİ videoları da görebilirsiniz)<br> • YouTube kanalı, 2020 Haziran ayında aktif hale geldi<br><br> Kanalın birincil amacı Matematik ve Fizik sevgisini oluşturmaktır. Bu yolda küçük de olsa bir katkım olursa ne mutlu bana.<br><br> Matematik, farkında olsak da olmasak da, yaşantımızın her anında bizimledir. Hayatımızla ilişkilendirilmiş Matematik daha kolay anlaşılabilir.<br><br> Sevmek isteyenlere şunu söyleyebilirim: "tanısanız çok seversiniz" :) Hadi tanıyalım...<br><br> Sevgiler... 👍😇🤗<br> Şimşek Hoca
+            </p>
+        </div>
+
+        <!-- ORTA ALT KUTU -->
+        <div class="extra-box">
+            <h3>Notlar & Duyurular</h3>
+            <p>
+                Bulamadığınız videolar için youtube sayfamı ziyaret etmeyi unutmayınız :)
+            </p>
+        </div>
+
+        
+    </div>
+
+    <!-- SAĞ -->
+    <div class="rightbar">
+
+        <!-- 1. PLAYLIST -->
+        <div class="playlist">
+            <a href="https://youtube.com/playlist?list=PLfTMhVncBpDAF4I0LYbmgtpN4fsEdkZ30" target="_blank">
+                <img src="https://i.ytimg.com/vi/Frgj2g3a87U/hqdefault.jpg" alt="Playlist">
+                <div class="playlist-title">
+                    YKS TYT & AYT Çözümleri
+                </div>
+            </a>
+        </div>
+
+        <!-- 2. PLAYLIST -->
+        <div class="playlist" style="margin-top:20px;">
+            <a href="https://youtube.com/playlist?list=PLfTMhVncBpDBaieU39_M_m-ouNDaAoS8M" target="_blank">
+                <img src="https://img.youtube.com/vi/wfjIbo7grX4/hqdefault.jpg" alt="Playlist">
+                <div class="playlist-title">
+                    TYT Fizik | Konu Anlatımlı Örnek Soru Çözümü
+                </div>
+            </a>
+        </div>
+        <!-- 3. PLAYLIST -->
+          <div class="playlist">
+            <a href="https://youtube.com/playlist?list=PLfTMhVncBpDBiwniwiTU8ywmMpFxoJBx3&si=d9iNZ7VRT_lZvHuO" target="_blank">
+                <img src="/profil/playlist.jpg" alt="Playlist">
+                <div class="playlist-title">
+                    11. Sınıf Fizik | MEB Ortak Yazılı Örnek Senaryo Soruları
+                </div>
+            </a>
+        </div>
+
+        <!-- 4. PLAYLIST-->
+         <div class="playlist">
+            <a href="https://youtube.com/playlist?list=PLfTMhVncBpDDwTFN4qZ9h7KVZr-ZO-J4y&si=Nh0EP8Psv0AiZET0" target="_blank">
+                <img src="/profil/2.jpg" alt="Playlist">
+                <div class="playlist-title">
+                    10. Sınıf Fizik Yeni Müfredat Konu Anlatımı
+                </div>
+            </a>
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- JS: Animasyonlu sayaç -->
+<script>
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText.replace(/,/g,'');
+        const increment = Math.ceil(target / 200);
+        if(count < target){
+            counter.innerText = (count + increment).toLocaleString();
+            setTimeout(updateCount, 20);
+        } else {
+            counter.innerText = target.toLocaleString();
+        }
+    };
+    updateCount();
+});
+</script>
+
+</body>
+</html>
